@@ -1,0 +1,224 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #c0392b, #e74c3c);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+/* Dark theme */
+body.dark-theme {
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+}
+
+/* Main container */
+.stopwatch-container {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 30px;
+    padding: 60px 40px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    min-width: 400px;
+    transition: transform 0.3s ease;
+}
+
+.stopwatch-container:hover {
+    transform: translateY(-5px);
+}
+
+/* Header */
+.header {
+    margin-bottom: 30px;
+}
+
+.title {
+    color: white;
+    font-size: 2rem;
+    font-weight: 300;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+}
+
+/* Theme toggle */
+.theme-toggle {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 12px;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+/* Time display */
+.time-display {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    padding: 30px 20px;
+    margin: 40px 0;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.time {
+    color: white;
+    font-size: 4rem;
+    font-weight: 300;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 3px;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.milliseconds {
+    color: #f39c12;
+    font-size: 1.5rem;
+    margin-top: 10px;
+    font-family: 'Courier New', monospace;
+}
+
+/* Buttons container */
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+/* Button styles */
+.btn {
+    background: linear-gradient(45deg, #f39c12, #e67e22);
+    border: none;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    min-width: 100px;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn-stop {
+    background: linear-gradient(45deg, #e74c3c, #c0392b);
+}
+
+.btn-reset {
+    background: linear-gradient(45deg, #95a5a6, #7f8c8d);
+}
+
+.btn-lap {
+    background: linear-gradient(45deg, #9b59b6, #8e44ad);
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Lap times */
+.lap-times {
+    max-height: 200px;
+    overflow-y: auto;
+    margin-top: 20px;
+}
+
+.lap-time {
+    background: rgba(255, 255, 255, 0.1);
+    margin: 5px 0;
+    padding: 10px 15px;
+    border-radius: 10px;
+    color: white;
+    font-family: 'Courier New', monospace;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lap-number {
+    color: #f39c12;
+    font-weight: bold;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .stopwatch-container {
+        margin: 20px;
+        padding: 40px 20px;
+        min-width: auto;
+        width: 90%;
+    }
+
+    .time {
+        font-size: 2.5rem;
+    }
+
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .controls {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn {
+        width: 200px;
+        margin: 5px 0;
+    }
+}
+
+/* Scroll bar styling */
+.lap-times::-webkit-scrollbar {
+    width: 6px;
+}
+
+.lap-times::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+}
+
+.lap-times::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+}
+
+/* Animation for time changes */
+.time-pulse {
+    animation: pulse 0.1s ease-in-out;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
